@@ -42,7 +42,8 @@ O sistema possui:
 
 ## Protótipos no Figma
 
-Adicionar link do Figma aqui.
+<img width="1572" height="941" alt="figma5" src="https://github.com/user-attachments/assets/6f4ff7f5-93e5-4003-861b-940cee4698d2" />
+(https://sugar-etch-85714628.figma.site/)
 
 ## Telas Desenvolvidas
 
