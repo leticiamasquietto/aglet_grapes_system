@@ -42,20 +42,29 @@ O sistema possui:
 
 ## Protótipos no Figma
 
-<img width="1572" height="941" alt="figma5" src="https://github.com/user-attachments/assets/6f4ff7f5-93e5-4003-861b-940cee4698d2" />
 (https://sugar-etch-85714628.figma.site/)
 
 ## Telas Desenvolvidas
 
 ### Tela de Login
 
+<img width="1572" height="941" alt="figma5" src="https://github.com/user-attachments/assets/60650ad4-baad-454c-97e1-aeaf9d58e4f8" />
+
 ### Dashboard
+
+<img width="1572" height="943" alt="figma4" src="https://github.com/user-attachments/assets/cfe823ab-7fd4-4c24-8d5c-8e02e1ef76d0" />
 
 ### Produtos
 
+<img width="1575" height="949" alt="figma3" src="https://github.com/user-attachments/assets/43924291-89ba-4d88-90f9-812b84a48e81" />
+
 ### Fornecedores
 
+<img width="1574" height="913" alt="figma2" src="https://github.com/user-attachments/assets/583dd9ef-945a-45eb-943e-570272574f09" />
+
 ### Cesta
+
+<img width="1574" height="919" alt="figma1" src="https://github.com/user-attachments/assets/da3f5ec4-b4ba-4b14-8a73-c76b4d18adb9" />
 
 ---
 
@@ -80,4 +89,5 @@ O banco de dados foi modelado utilizando MySQL Workbench, considerando os relaci
 
 ## DER da Aplicação
 
-![DER](imagens/der_aglet_grapes.png)
+<img width="1129" height="1184" alt="DERAgletGrapesSystem" src="https://github.com/user-attachments/assets/ec015909-b82b-484d-ad73-4081967cc03e" />
+
