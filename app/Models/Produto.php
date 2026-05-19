@@ -10,4 +10,24 @@ class Produto extends Model
     use HasFactory;
 
     protected $table = 'produtos';
+
+    protected $fillable = [
+        'nome',
+        'descricao',
+        'preco',
+        'fornecedor_id',
+    ];
+
+    public function fornecedor()
+    {
+        return $this->belongsTo(Fornecedor::class);
+    }
+
+    public function cestas()
+    {
+        return $this->belongsToMany(
+            Cesta::class,
+            'cesta_produto'
+        );
+    }
 }
