@@ -42,17 +42,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])
         ->name('dashboard');
 
-    Route::get('/produtos', [ProdutoController::class, 'index'])
-        ->name('produtos.index');
+    Route::resource('produtos', ProdutoController::class);
 
     Route::get('/cesta', [CestaController::class, 'index'])
         ->name('cesta.index');
-
-    /*
-    |--------------------------------------------------------------------------
-    | FORNECEDORES
-    |--------------------------------------------------------------------------
-    */
 
     Route::resource('fornecedores', FornecedorController::class);
 
