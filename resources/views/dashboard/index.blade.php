@@ -32,7 +32,7 @@
                 </p>
 
                 <h2 class="text-[28px] font-bold text-[#2A183F] mt-1">
-                    48
+                    {{ $totalProdutos }}
                 </h2>
 
             </div>
@@ -59,7 +59,7 @@
                 </p>
 
                 <h2 class="text-[28px] font-bold text-[#2A183F] mt-1">
-                    12
+                    {{ $totalFornecedores }}
                 </h2>
 
             </div>
@@ -86,7 +86,7 @@
                 </p>
 
                 <h2 class="text-[28px] font-bold text-[#2A183F] mt-1">
-                    8
+                    {{ $produtosNaCesta }}
                 </h2>
 
             </div>
@@ -113,7 +113,7 @@
                 </p>
 
                 <h2 class="text-[28px] font-bold text-[#2A183F] mt-1">
-                    R$ 12.450
+                    R$ {{ number_format($vendasMes, 2, ',', '.') }}
                 </h2>
 
             </div>
@@ -142,29 +142,35 @@
 
         <div class="space-y-3">
 
-            @for($i = 0; $i < 4; $i++)
+            @forelse($produtosRecentes as $produto)
 
                 <div class="bg-[#FAF7FD] rounded-2xl p-4 flex justify-between items-center">
 
                     <div>
 
                         <p class="text-[16px] font-semibold text-[#2A183F]">
-                            Geleia de Uva Roxa
+                            {{ $produto->nome }}
                         </p>
 
                         <p class="text-[13px] text-[#6B6475]">
-                            Fazenda Vale Verde
+                            {{ $produto->fornecedor->nome }}
                         </p>
 
                     </div>
 
                     <p class="text-[16px] font-semibold text-[#4B2354]">
-                        R$ 28,00
+                        R$ {{ number_format($produto->preco, 2, ',', '.') }}
                     </p>
 
                 </div>
 
-            @endfor
+            @empty
+
+                <p class="text-[14px] text-[#6B6475]">
+                    Nenhum produto cadastrado.
+                </p>
+
+            @endforelse
 
         </div>
 
@@ -179,29 +185,35 @@
 
         <div class="space-y-3">
 
-            @for($i = 0; $i < 4; $i++)
+            @forelse($fornecedoresDestaque as $fornecedor)
 
                 <div class="bg-[#FAF7FD] rounded-2xl p-4 flex justify-between items-center">
 
                     <div>
 
                         <p class="text-[16px] font-semibold text-[#2A183F]">
-                            Fazenda Vale Verde
+                            {{ $fornecedor->nome }}
                         </p>
 
                         <p class="text-[13px] text-[#6B6475]">
-                            12 produtos
+                            {{ $fornecedor->produtos_count }} produtos
                         </p>
 
                     </div>
 
                     <p class="text-[16px] font-semibold text-[#C2A85C]">
-                        ★ 4.8
+                        ★
                     </p>
 
                 </div>
 
-            @endfor
+            @empty
+
+                <p class="text-[14px] text-[#6B6475]">
+                    Nenhum fornecedor encontrado.
+                </p>
+
+            @endforelse
 
         </div>
 
