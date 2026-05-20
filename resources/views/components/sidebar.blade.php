@@ -19,7 +19,7 @@
 
             <!-- DASHBOARD -->
             <a
-                href="/dashboard"
+                href="{{ route('dashboard') }}"
                 class="flex items-center gap-3 px-4 py-4 rounded-2xl bg-[#6B3A76] hover:bg-[#74407f] transition"
             >
                 <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
@@ -31,7 +31,7 @@
 
             <!-- PRODUTOS -->
             <a
-                href="/produtos"
+                href="{{ route('produtos.index') }}"
                 class="flex items-center gap-3 px-4 py-4 rounded-2xl hover:bg-[#6B3A76] transition"
             >
                 <i data-lucide="package" class="w-5 h-5"></i>
@@ -43,7 +43,7 @@
 
             <!-- FORNECEDORES -->
             <a
-                href="/fornecedores"
+                href="{{ route('fornecedores.index') }}"
                 class="flex items-center gap-3 px-4 py-4 rounded-2xl hover:bg-[#6B3A76] transition"
             >
                 <i data-lucide="users" class="w-5 h-5"></i>
@@ -55,7 +55,7 @@
 
             <!-- CESTA -->
             <a
-                href="/cesta"
+                href="{{ route('cesta.index') }}"
                 class="flex items-center gap-3 px-4 py-4 rounded-2xl hover:bg-[#6B3A76] transition"
             >
                 <i data-lucide="shopping-cart" class="w-5 h-5"></i>

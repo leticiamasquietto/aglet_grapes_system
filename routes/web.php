@@ -1,7 +1,18 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\FornecedorController;
+use App\Http\Controllers\CestaController;
+
+/*
+|--------------------------------------------------------------------------
+| ROTAS PÚBLICAS
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/', function () {
     return redirect('/login');
@@ -12,16 +23,32 @@ Route::get('/login', [AuthController::class, 'showLogin'])
 
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::get('/register', [AuthController::class, 'showRegister']);
+Route::get('/register', [AuthController::class, 'showRegister'])
+    ->name('register');
 
 Route::post('/register', [AuthController::class, 'register']);
 
-Route::post('/logout', [AuthController::class, 'logout']);
+Route::post('/logout', [AuthController::class, 'logout'])
+    ->name('logout');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware('auth');
+/*
+|--------------------------------------------------------------------------
+| ROTAS PROTEGIDAS
+|--------------------------------------------------------------------------
+*/
 
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
-})->middleware('auth');
+Route::middleware('auth')->group(function () {
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])
+        ->name('dashboard');
+
+    Route::get('/produtos', [ProdutoController::class, 'index'])
+        ->name('produtos.index');
+
+    Route::get('/fornecedores', [FornecedorController::class, 'index'])
+        ->name('fornecedores.index');
+
+    Route::get('/cesta', [CestaController::class, 'index'])
+        ->name('cesta.index');
+
+});
