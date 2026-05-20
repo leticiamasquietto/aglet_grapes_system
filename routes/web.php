@@ -45,10 +45,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/produtos', [ProdutoController::class, 'index'])
         ->name('produtos.index');
 
-    Route::get('/fornecedores', [FornecedorController::class, 'index'])
-        ->name('fornecedores.index');
-
     Route::get('/cesta', [CestaController::class, 'index'])
         ->name('cesta.index');
+
+    /*
+    |--------------------------------------------------------------------------
+    | FORNECEDORES
+    |--------------------------------------------------------------------------
+    */
+
+    Route::resource('fornecedores', FornecedorController::class);
 
 });
