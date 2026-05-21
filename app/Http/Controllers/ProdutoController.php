@@ -109,15 +109,17 @@ class ProdutoController extends Controller
 
         if ($produto->cestas()->count() > 0) {
 
-            return redirect()
-                ->route('produtos.index')
-                ->with('error', 'Produto está em uma cesta.');
+            return response()->json([
+                'success' => false,
+                'message' => 'Produto está em uma cesta.'
+            ], 400);
         }
 
         $produto->delete();
 
-        return redirect()
-            ->route('produtos.index')
-            ->with('success', 'Produto excluído.');
+        return response()->json([
+            'success' => true,
+            'message' => 'Produto excluído.'
+        ]);
     }
 }

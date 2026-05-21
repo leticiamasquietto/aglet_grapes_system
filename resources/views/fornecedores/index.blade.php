@@ -173,7 +173,7 @@
 
             @foreach($fornecedores as $fornecedor)
 
-                <div class="grid grid-cols-12 items-center py-6 border-b border-[#F1F1F1]">
+                <div id="fornecedor-{{ $fornecedor->id }}" class="grid grid-cols-12 items-center py-6 border-b border-[#F1F1F1]">
 
                     <!-- NOME -->
                     <div class="col-span-3">
@@ -214,23 +214,12 @@
                         </button>
 
                         <!-- EXCLUIR -->
-                        <form
-                            action="{{ route('fornecedores.destroy', $fornecedor->id) }}"
-                            method="POST"
-                            onsubmit="return confirm('Deseja realmente excluir este fornecedor?')"
+                        <button
+                            onclick="excluirFornecedor({{ $fornecedor->id }}, this)"
+                            class="text-red-500 hover:text-red-700"
                         >
-
-                            @csrf
-                            @method('DELETE')
-
-                            <button
-                                type="submit"
-                                class="text-[#D5485B] hover:text-red-700 transition"
-                            >
-                                <i data-lucide="trash-2" class="w-5 h-5"></i>
-                            </button>
-
-                        </form>
+                            <i data-lucide="trash-2" class="w-5 h-5"></i>
+                        </button>
 
                     </div>
 
@@ -440,6 +429,41 @@ document
 
 });
 
+async function excluirFornecedor(id)
+{
+    if (!confirm('Deseja excluir este fornecedor?')) {
+        return;
+    }
+
+    const response = await fetch(`/fornecedores/${id}`, {
+
+        method: 'POST',
+
+        headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+            'Accept': 'application/json',
+        },
+
+        body: new URLSearchParams({
+            _method: 'DELETE'
+        })
+
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+
+        document
+            .getElementById(`fornecedor-${id}`)
+            .remove();
+
+    } else {
+
+        alert(data.message);
+
+    }
+}
 </script>
 
 @endsection

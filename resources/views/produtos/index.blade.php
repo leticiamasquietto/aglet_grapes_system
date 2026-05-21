@@ -182,7 +182,7 @@
 
                 @foreach($produtos as $produto)
 
-                    <tr class="border-b border-[#F1F1F1]">
+                    <tr id="produto-{{ $produto->id }}" class="border-b border-[#F1F1F1]">
 
                         <td class="py-5">
 
@@ -217,20 +217,12 @@
                                 </button>
 
                                 <!-- EXCLUIR -->
-                                <form
-                                    action="{{ route('produtos.destroy', $produto->id) }}"
-                                    method="POST"
-                                    onsubmit="return confirm('Deseja excluir?')"
+                                <button
+                                    onclick="excluirProduto({{ $produto->id }})"
+                                    class="text-red-500 hover:text-red-700"
                                 >
-
-                                    @csrf
-                                    @method('DELETE')
-
-                                    <button class="text-red-500 hover:text-red-700">
-                                        <i data-lucide="trash-2" class="w-5 h-5"></i>
-                                    </button>
-
-                                </form>
+                                    <i data-lucide="trash-2" class="w-5 h-5"></i>
+                                </button>
 
                             </div>
 
@@ -423,6 +415,42 @@
         location.reload();
     });
 
+
+    async function excluirProduto(id)
+    {
+        if (!confirm('Deseja excluir este produto?')) {
+            return;
+        }
+
+        const response = await fetch(`/produtos/${id}`, {
+
+            method: 'POST',
+
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                'Accept': 'application/json',
+            },
+
+            body: new URLSearchParams({
+                _method: 'DELETE'
+            })
+
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+
+            document
+                .getElementById(`produto-${id}`)
+                .remove();
+
+        } else {
+
+            alert(data.message);
+
+        }
+    }
 </script>
 
 @endsection

@@ -81,26 +81,28 @@ class FornecedorController extends Controller
 
     public function destroy($id)
     {
-        $fornecedor = Fornecedor::findOrFail($id);
+        $fornecedor = Fornecedor::findOrFail($id);  
+    
         /*
         |--------------------------------------------------------------------------
         | NÃO PERMITIR EXCLUSÃO
-        | se fornecedor possuir produtos
         |--------------------------------------------------------------------------
         */
 
         if ($fornecedor->produtos()->count() > 0) {
 
-            return redirect()
-                ->route('fornecedores.index')
-                ->with('error', 'Não é possível excluir fornecedor com produtos.');
+            return response()->json([
+                'success' => false,
+                'message' => 'Não é possível excluir fornecedor com produtos.'
+            ], 400);
         }
 
         $fornecedor->delete();
 
-        return redirect()
-            ->route('fornecedores.index')
-            ->with('success', 'Fornecedor excluído com sucesso.');
+        return response()->json([
+            'success' => true,
+            'message' => 'Fornecedor excluído com sucesso.'
+        ]);
     }
 
     public function edit($id)
