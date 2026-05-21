@@ -47,6 +47,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/cesta', [CestaController::class, 'index'])
         ->name('cesta.index');
 
+    Route::post('/cesta/adicionar', [CestaController::class, 'adicionar'])
+        ->name('cesta.adicionar');
+
+    Route::post('/cesta/finalizar', [CestaController::class, 'finalizar'])
+        ->name('cesta.finalizar');
+
     Route::resource('fornecedores', FornecedorController::class);
 
 });
