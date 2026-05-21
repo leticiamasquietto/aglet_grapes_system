@@ -20,7 +20,10 @@
             <!-- DASHBOARD -->
             <a
                 href="{{ route('dashboard') }}"
-                class="flex items-center gap-3 px-4 py-4 rounded-2xl bg-[#6B3A76] hover:bg-[#74407f] transition"
+                class="flex items-center gap-3 px-4 py-4 rounded-2xl transition
+                {{ request()->routeIs('dashboard')
+                    ? 'bg-[#6B3A76]'
+                    : 'hover:bg-[#6B3A76]' }}"
             >
                 <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
 
@@ -32,7 +35,10 @@
             <!-- PRODUTOS -->
             <a
                 href="{{ route('produtos.index') }}"
-                class="flex items-center gap-3 px-4 py-4 rounded-2xl hover:bg-[#6B3A76] transition"
+                class="flex items-center gap-3 px-4 py-4 rounded-2xl transition
+                {{ request()->routeIs('produtos.*')
+                    ? 'bg-[#6B3A76]'
+                    : 'hover:bg-[#6B3A76]' }}"
             >
                 <i data-lucide="package" class="w-5 h-5"></i>
 
@@ -44,7 +50,10 @@
             <!-- FORNECEDORES -->
             <a
                 href="{{ route('fornecedores.index') }}"
-                class="flex items-center gap-3 px-4 py-4 rounded-2xl hover:bg-[#6B3A76] transition"
+                class="flex items-center gap-3 px-4 py-4 rounded-2xl transition
+                {{ request()->routeIs('fornecedores.*')
+                    ? 'bg-[#6B3A76]'
+                    : 'hover:bg-[#6B3A76]' }}"
             >
                 <i data-lucide="users" class="w-5 h-5"></i>
 
@@ -56,7 +65,10 @@
             <!-- CESTA -->
             <a
                 href="{{ route('cesta.index') }}"
-                class="flex items-center gap-3 px-4 py-4 rounded-2xl hover:bg-[#6B3A76] transition"
+                class="flex items-center gap-3 px-4 py-4 rounded-2xl transition
+                {{ request()->routeIs('cesta.*')
+                    ? 'bg-[#6B3A76]'
+                    : 'hover:bg-[#6B3A76]' }}"
             >
                 <i data-lucide="shopping-cart" class="w-5 h-5"></i>
 
