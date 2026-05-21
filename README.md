@@ -1,35 +1,104 @@
 # Aglet Grapes
 
-Sistema web de gestão de produtos desenvolvido para a disciplina de Desenvolvimento Web.
+Sistema web de gestão de produtos artesanais desenvolvido para a disciplina de Desenvolvimento Web.
 
-O projeto tem como objetivo realizar autenticação de usuários, cadastro de produtos e fornecedores, além do gerenciamento de cestas de compras.
+O projeto foi construído utilizando Laravel e tem como objetivo realizar o gerenciamento completo de produtos, fornecedores e cestas de compras, além de autenticação de usuários e dashboard administrativo.
+
+O sistema foi desenvolvido com foco em:
+
+* organização de produtos artesanais;
+* gerenciamento de fornecedores;
+* controle de cesta de compras;
+* interface moderna inspirada em marketplaces;
+* experiência visual baseada em protótipos desenvolvidos no Figma;
+* utilização de AJAX para operações dinâmicas sem recarregamento de página.
 
 ---
 
 # Integrantes
 
-* Letícia Masquietto de Oliveira Silva
-* Agda Beatriz Jedliczka Domingues
+* Letícia Masquietto de Oliveira Silva - RA 60300765
+* Agda Beatriz Jedliczka Domingues - RA 60000631
 
 ---
 
 # Tecnologias Utilizadas
 
-* PHP
+## Backend
+
+* PHP 8
+* Laravel 13
+* Eloquent ORM
 * MySQL
-* PDO
+
+## Frontend
+
+* Blade
 * HTML5
-* CSS3
+* Tailwind CSS
 * JavaScript
-* Bootstrap/Tailwind
+* AJAX
+* Lucide Icons
+
+## Ferramentas
+
 * MySQL Workbench
 * Figma
+* GitHub
+* Composer
+* XAMPP
+
+---
+
+# Funcionalidades do Sistema
+
+## Autenticação
+
+* Cadastro de usuários
+* Login
+* Logout
+* Rotas protegidas com middleware de autenticação
+
+## Dashboard
+
+* Quantidade total de produtos cadastrados
+* Quantidade de fornecedores ativos
+* Quantidade de produtos na cesta
+* Valor total das vendas
+* Produtos recentes
+* Fornecedores em destaque
+
+## Fornecedores
+
+* Cadastro de fornecedores
+* Listagem dinâmica
+* Edição utilizando modal AJAX
+* Exclusão dinâmica sem reload
+* Validação de e-mail único
+
+## Produtos
+
+* Cadastro de produtos
+* Associação com fornecedores
+* Edição utilizando modal AJAX
+* Exclusão dinâmica sem reload
+* Proteção contra exclusão de produtos presentes na cesta
+
+## Cesta
+
+* Criação automática de cesta ativa
+* Adição de produtos sem duplicação
+* Atualização automática do resumo
+* Finalização de pedido
+* Limpeza automática da cesta
 
 ---
 
 # Etapa 1 — Análise
 
 A interface do sistema foi planejada utilizando o Figma, seguindo boas práticas de UX/UI e priorizando uma navegação simples, moderna e intuitiva.
+
+O design foi inspirado em sistemas modernos de marketplace e dashboards administrativos, utilizando cores suaves, cards, tabelas minimalistas e componentes reutilizáveis.
 
 O sistema possui:
 
@@ -42,7 +111,7 @@ O sistema possui:
 
 ## Protótipos no Figma
 
-(https://sugar-etch-85714628.figma.site/)
+https://sugar-etch-85714628.figma.site/
 
 ## Telas Desenvolvidas
 
@@ -72,6 +141,8 @@ O sistema possui:
 
 O banco de dados foi modelado utilizando MySQL Workbench, considerando os relacionamentos necessários para autenticação, cadastro de produtos, fornecedores e gerenciamento da cesta.
 
+A modelagem foi construída seguindo o padrão relacional e respeitando regras de integridade referencial.
+
 ## Entidades
 
 * usuarios
@@ -91,3 +162,53 @@ O banco de dados foi modelado utilizando MySQL Workbench, considerando os relaci
 
 <img width="1129" height="1184" alt="DERAgletGrapesSystem" src="https://github.com/user-attachments/assets/ec015909-b82b-484d-ad73-4081967cc03e" />
 
+---
+
+# Estrutura do Projeto
+
+O sistema segue a arquitetura MVC do Laravel.
+
+## Models
+
+Responsáveis pela comunicação com o banco de dados:
+
+* User
+* Produto
+* Fornecedor
+* Cesta
+
+## Controllers
+
+Responsáveis pelas regras de negócio:
+
+* AuthController
+* DashboardController
+* ProdutoController
+* FornecedorController
+* CestaController
+
+## Views
+
+Interfaces desenvolvidas utilizando Blade e Tailwind CSS:
+
+* Login
+* Cadastro
+* Dashboard
+* Produtos
+* Fornecedores
+* Cesta
+
+---
+
+# Funcionalidades AJAX
+
+O sistema utiliza AJAX para tornar a experiência mais dinâmica e moderna.
+
+Operações realizadas sem reload:
+
+* edição de fornecedores;
+* edição de produtos;
+* exclusão de fornecedores;
+* exclusão de produtos;
+* atualização da cesta;
+* atualização automática de resumo.
